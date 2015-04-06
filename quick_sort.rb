@@ -1,11 +1,11 @@
 
-# Sorts an integer array in ascending order using quicksort algorithm
+# Sorts an integer array in ascending order using quicksort algorithm.
 # @params array [Array] Target array to sort
-# @params low [Integer]
-# @params high [Integer]
-# @return [Array] Sorted array
+# @params low [Integer] The lowest index of the sub-array
+# @params high [Integer] The highest index of the sub-array
+# @return [Array] Sorted array in range between low and high indices
 def quick_sort(array, low=0, high=nil)
-  return array unless validate(array)#if array.length <= 1
+  return array unless validate(array)
 
   high = array.length-1 if high.nil?
 
@@ -41,10 +41,11 @@ def partition(array, low, high)
 end
 
 
-# Check if it is an integer array or not
-# @params array [Array]
-# @return [Boolean]
+# Check if it is an integer array or not.
+# @params array [Array] Array to check
+# @return [Boolean] Returns true if the array contains integer values only
 def validate(array)
+  return false unless array.is_a? Array
   return false if array.length <= 1
   array.each do |a|
     return false unless a.is_a? Fixnum
