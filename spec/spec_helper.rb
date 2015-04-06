@@ -5,7 +5,7 @@ require 'simplecov'
 # SimpleCov configuration
 SimpleCov.start do
   # Ignore these paths
-  add_filter '/vendor/bundle/'
+  add_filter '/vendor'
 end
 SimpleCov.command_name "rspec"
 SimpleCov.command_name "RSpec"
