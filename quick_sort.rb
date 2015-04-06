@@ -5,7 +5,8 @@
 # @params high [Integer]
 # @return [Array] Sorted array
 def quick_sort(array, low=0, high=nil)
-  return array if array.length <= 1
+  return array unless validate(array)#if array.length <= 1
+
   high = array.length-1 if high.nil?
 
   if low < high
@@ -13,6 +14,7 @@ def quick_sort(array, low=0, high=nil)
     quick_sort(array, low, p_index-1)
     quick_sort(array, p_index+1, high)
   end
+  array
 end
 
 
@@ -39,13 +41,15 @@ def partition(array, low, high)
 end
 
 
-# Utility function for printing all elements inside of an array
-# @params array [Array] Array
-# @return [String] E.g. [0,1,2] => '0 1 2'
-def print(array)
-  s = ''
+# Check if it is an integer array or not
+# @params array [Array]
+# @return [Boolean]
+def validate(array)
+  return false if array.length <= 1
   array.each do |a|
-    s += "#{a} "
+    return false unless a.is_a? Fixnum
   end
-  s[0..-2]  # Remove the last character and return
+
+  true
 end
+
